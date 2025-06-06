@@ -1,9 +1,10 @@
 package ru.zdevs.intellij.c.debug
 
 import com.intellij.openapi.components.StoredProperty
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.execution.ParametersListUtil
 import com.redhat.devtools.lsp4ij.dap.configurations.DAPRunConfigurationOptions
-import com.redhat.devtools.lsp4ij.launching.ServerMappingSettings
 
 class CRunConfigurationOptions : DAPRunConfigurationOptions() {
     private val stopAtMainProp: StoredProperty<Boolean> = property(true).provideDelegate(this, "stopAtMain")
@@ -31,12 +32,11 @@ class CRunConfigurationOptions : DAPRunConfigurationOptions() {
         }
     }
 
-    override fun getServerMappings(): List<ServerMappingSettings> {
-        return listOf(MAPPING_FILE_TYPE, MAPPING_LANG)
+    override fun isDebuggableFile(file: VirtualFile, project: Project): Boolean {
+        return MAPPING_FILE_TYPE.contains(file.extension)
     }
 
     companion object {
-        private val MAPPING_FILE_TYPE = ServerMappingSettings.createFileNamePatternsMappingSettings(listOf("*.c", "*.cpp", "*.cc", "*.h", "*.hpp", "*.s", "*.S"), "clangd")
-        private val MAPPING_LANG = ServerMappingSettings.createLanguageMappingSettings("clangd", "clangd")
+        private val MAPPING_FILE_TYPE = listOf("c", "cpp", "cc", "h", "hpp", "s", "S")
     }
 }
