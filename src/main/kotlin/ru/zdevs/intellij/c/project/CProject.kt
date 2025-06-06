@@ -1,7 +1,5 @@
 package ru.zdevs.intellij.c.project
 
-import com.intellij.openapi.application.ApplicationManager
-
 class CProject {
     companion object {
         const val BUILD_SYSTEM_MAKEFILE = "Makefile"

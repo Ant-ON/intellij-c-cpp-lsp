@@ -14,6 +14,7 @@ class CFileIconProvider : FileIconProvider {
             "s" -> Icons.ASM
             "mk" -> Icons.MK
             "in" -> Icons.TEMPLATE
+            "cmake" -> Icons.CMAKE
             else -> when (file.name) {
                 "Makefile" -> Icons.MAKEFILE
                 "CMakeLists.txt" -> Icons.CMAKE

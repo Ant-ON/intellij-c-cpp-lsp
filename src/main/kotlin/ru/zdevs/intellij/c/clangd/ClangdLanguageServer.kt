@@ -12,7 +12,7 @@ class ClangdLanguageServer(project: Project) : ProcessStreamConnectionProvider()
     init {
         val clangdPath = Utils.findExecutableInPATH(CLANGD_EXEC_NAME)
         if (!clangdPath.isNullOrEmpty()) {
-            super.setCommands(listOf(clangdPath, "--clang-tidy", "--background-index"))
+            super.setCommands(listOf(clangdPath, "--clang-tidy", "--background-index", "--enable-config"))
             super.setWorkingDirectory(project.basePath)
         } else {
             NotificationGroupManager.getInstance().getNotificationGroup("C/C++ Clangd LSP").createNotification(

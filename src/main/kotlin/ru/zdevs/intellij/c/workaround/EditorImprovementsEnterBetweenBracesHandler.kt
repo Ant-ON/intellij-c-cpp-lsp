@@ -2,7 +2,7 @@ package ru.zdevs.intellij.c.workaround
 
 import com.intellij.application.options.CodeStyle
 import com.intellij.codeInsight.CodeInsightSettings
-import com.intellij.codeInsight.editorActions.enter.EnterBetweenBracesHandler
+import com.intellij.codeInsight.editorActions.enter.EnterBetweenBracesFinalHandler
 import com.intellij.codeInsight.editorActions.enter.EnterHandlerDelegate
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Document
@@ -31,7 +31,7 @@ import ru.zdevs.intellij.c.lang.ClangdLanguage
 /**
  * This provides a workaround for [IJPL-159454](https://youtrack.jetbrains.com/issue/IJPL-159454).
  */
-class EditorImprovementsEnterBetweenBracesHandler : EnterBetweenBracesHandler() {
+class EditorImprovementsEnterBetweenBracesHandler : EnterBetweenBracesFinalHandler() {
     private var enterAfterOpenBrace = false
     private var openBraceCharacter: Char? = null
     private var enterBeforeCloseBrace = false
@@ -124,7 +124,7 @@ class EditorImprovementsEnterBetweenBracesHandler : EnterBetweenBracesHandler() 
                         val afterBracedPairEndChars =
                             documentChars.subSequence(bracedPairEndOffset + 1, bracedPairEndLineEndOffset)
                         val afterBracedPairEndText = afterBracedPairEndChars.toString()
-                        if (!afterBracedPairEndText.isEmpty() && afterBracedPairEndText.trim { it <= ' ' }.isEmpty()) {
+                        if (afterBracedPairEndText.isNotEmpty() && afterBracedPairEndText.trim { it <= ' ' }.isEmpty()) {
                             bracedPairEndOffset = bracedPairEndLineEndOffset - 1
                         }
                     }

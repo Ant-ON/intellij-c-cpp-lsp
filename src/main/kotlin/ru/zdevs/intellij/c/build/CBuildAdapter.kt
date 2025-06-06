@@ -49,7 +49,7 @@ open class CBuildAdapter(
             .withContentDescriptor { buildContentDescriptor }
             .withRestartAction(StopProcessAction("Stop", "Stop", ctx.processHandler))
 
-        val buildStarted = StartBuildEventImpl(descriptor, "Build running...")
+        val buildStarted = StartBuildEventImpl(descriptor, "running...")
         buildProgressListener.onEvent(ctx.buildId, buildStarted)
     }
 
