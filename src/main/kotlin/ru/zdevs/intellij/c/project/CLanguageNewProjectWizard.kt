@@ -75,7 +75,7 @@ class CLanguageNewProjectWizard : LanguageGeneratorNewProjectWizard {
                                 comboBox.selectedItem = path
                             }
                         }
-                    ui.addBrowseFolderListener(null, choose, folderHandling)
+                    ui.addBrowseFolderListener(null, null, null, choose, folderHandling)
                 }
             }
 

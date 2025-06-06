@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity("2024.3.5")
+        intellijIdeaCommunity("2024.1")
         plugin("com.redhat.devtools.lsp4ij:0.13.0")
         bundledPlugin("org.jetbrains.plugins.textmate")
         pluginVerifier()
@@ -30,7 +30,7 @@ dependencies {
 intellijPlatform {
     pluginVerification {
         ides {
-            ide(IntelliJPlatformType.IntellijIdeaCommunity, "2024.3.5")
+            ide(IntelliJPlatformType.IntellijIdeaCommunity, "2024.1")
         }
     }
 }
@@ -47,7 +47,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("241")
+        sinceBuild.set("240")
         untilBuild.set("260.*")
     }
 
