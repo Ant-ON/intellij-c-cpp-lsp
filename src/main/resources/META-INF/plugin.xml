@@ -18,20 +18,21 @@
                 implementationClass="ru.zdevs.intellij.c.lang.ClangdFileType"
                 language="clangd"
                 extensions="c;cpp;h;hpp;cc;S;s;asm" />
-        <!--lang.substitutor
+        <lang.substitutor
                 language="clangd"
                 order="first"
-                implementationClass="ru.zdevs.intellij.c.lang.ClangdLanguageSubstitutor"/-->
+                implementationClass="ru.zdevs.intellij.c.lang.ClangdLanguageSubstitutor"/>
 
-        <!-- TextMate: code highlighter -->
+        <!-- TextMate: code highlighter
         <editorHighlighterProvider
                 filetype="clangd"
                 implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateEditorHighlighterProvider"/>
         <lang.syntaxHighlighterFactory
                 language="clangd"
                 implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateSyntaxHighlighterFactory"/>
+        -->
 
-        <!-- TextMate: functions -->
+        <!-- TextMate: functions
         <braceMatcher
                 filetype="clangd"
                 implementationClass="org.jetbrains.plugins.textmate.editor.TextMateBraceMatcher"/>
@@ -45,6 +46,7 @@
                 language="clangd"
                 implementationClass="org.jetbrains.plugins.textmate.editor.TextMateCompletionContributor"
                 order="last"/>
+        -->
 
         <!-- Workaround for https://youtrack.jetbrains.com/issue/IJPL-159454 -->
         <enterHandlerDelegate

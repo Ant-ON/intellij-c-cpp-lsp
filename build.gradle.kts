@@ -19,7 +19,7 @@ repositories {
 dependencies {
     intellijPlatform {
         intellijIdeaCommunity("2024.1")
-        plugin("com.redhat.devtools.lsp4ij:0.13.0")
+        plugin("com.redhat.devtools.lsp4ij:0.14.1")
         bundledPlugin("org.jetbrains.plugins.textmate")
         pluginVerifier()
         zipSigner()
