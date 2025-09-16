@@ -2,13 +2,12 @@ package ru.zdevs.intellij.c
 
 import com.intellij.util.EnvironmentUtil
 import java.io.File
-import java.nio.file.Paths
 
 class Utils {
     companion object {
-        fun findExecutableInPATH(executable: String) =
+        fun findExecutableInPATH(executable: Array<String>) =
             EnvironmentUtil.getValue("PATH")?.split(File.pathSeparator)?.firstNotNullOfOrNull { path ->
-                Paths.get(path, executable).toFile().takeIf { it.canExecute() }
+                executable.firstNotNullOfOrNull { exe -> File(path, exe).takeIf { it.canExecute() } }
             }?.path
     }
 }

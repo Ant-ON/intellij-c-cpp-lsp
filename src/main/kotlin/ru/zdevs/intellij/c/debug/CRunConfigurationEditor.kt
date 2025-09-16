@@ -37,7 +37,7 @@ class CRunConfigurationEditor : SettingsEditor<DAPRunConfiguration>() {
         arguments = JTextArea()
 
         debugger.whenItemSelectedFromUi { item ->
-            command.text = SERVER_COMMAND[SERVER_IDS.indexOf(item)]
+            command.text = SERVER_COMMAND[SERVER_IDS.indexOf(item)][0]
         }
         command.addBrowseFolderListener(TextBrowseFolderListener(
             FileChooserDescriptorFactory.createSingleFileDescriptor()
@@ -89,7 +89,7 @@ class CRunConfigurationEditor : SettingsEditor<DAPRunConfiguration>() {
             serverIndex = 0
         }
         debugger.selectedIndex = serverIndex
-        command.text = if (configuration.command.isNullOrEmpty()) SERVER_COMMAND[serverIndex] else configuration.command
+        command.text = if (configuration.command.isNullOrEmpty()) SERVER_COMMAND[serverIndex][0] else configuration.command
         workDir.text = configuration.workingDirectory ?: ""
         executable.text = configuration.file ?: ""
 

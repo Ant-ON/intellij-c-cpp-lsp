@@ -16,6 +16,6 @@ class LLDBDebugAdapterDescriptorFactory : DebugAdapterDescriptorFactory() {
     }
 
     override fun getConfigurationEditor(project: Project): SettingsEditor<out RunConfiguration?> {
-        return CRunConfigurationDefaultSettings(project, LLDBDebugAdapterDescriptor.DEBUGGER_EXEC_NAME)
+        return CRunConfigurationDefaultSettings(project, LLDBDebugAdapterDescriptor.DEBUGGER_EXEC_NAME[0])
     }
 }

@@ -31,11 +31,11 @@ class GDBDebugAdapterDescriptor(
             (options as DAPRunConfigurationOptions).command
         } else
             null
-        if (command.isNullOrEmpty() || LLDBDebugAdapterDescriptor.DEBUGGER_EXEC_NAME == command) {
+        if (command.isNullOrEmpty() || LLDBDebugAdapterDescriptor.DEBUGGER_EXEC_NAME.contains(command)) {
             command = Utils.findExecutableInPATH(DEBUGGER_EXEC_NAME)
         }
         if (command.isNullOrEmpty()) {
-            throw ExecutionException("GDB not found. Make sure it is installed properly (and `${ru.zdevs.intellij.c.debug.LLDBDebugAdapterDescriptor.DEBUGGER_EXEC_NAME}` available in PATH), and restart the IDE.")
+            throw ExecutionException("GDB not found. Make sure it is installed properly (and `${DEBUGGER_EXEC_NAME[0]}` available in PATH), and restart the IDE.")
         }
 
         val file = (options as FileOptionConfigurable).file
@@ -88,6 +88,10 @@ class GDBDebugAdapterDescriptor(
     }
 
     companion object {
-        val DEBUGGER_EXEC_NAME = if (SystemInfo.isWindows) "gdb.exe" else "gdb"
+        val DEBUGGER_EXEC_NAME = if (SystemInfo.isWindows) {
+            arrayOf("gdb.exe")
+        } else {
+            arrayOf("gdb")
+        }
     }
 }

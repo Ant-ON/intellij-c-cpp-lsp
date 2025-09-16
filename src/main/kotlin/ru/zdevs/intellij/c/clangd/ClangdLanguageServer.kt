@@ -25,6 +25,10 @@ class ClangdLanguageServer(project: Project) : ProcessStreamConnectionProvider()
     }
 
     companion object {
-        val CLANGD_EXEC_NAME = if (SystemInfo.isWindows) "clangd.exe" else "clangd"
+        val CLANGD_EXEC_NAME = if (SystemInfo.isWindows) {
+            arrayOf("clangd.exe")
+        } else {
+            arrayOf("clangd", "clangd-19", "clangd-20", "clangd-21", "clangd-22", "clangd-23")
+        }
     }
 }
