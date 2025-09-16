@@ -61,7 +61,7 @@ class LLDBDebugAdapterDescriptor(
         }
 
         // language=JSON
-        val launchJson = """                
+        val launchJson = """
                 {
                   "type": "lldb-dap",
                   "name": "Launch executable file",
