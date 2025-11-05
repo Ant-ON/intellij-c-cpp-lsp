@@ -11,7 +11,9 @@ import com.redhat.devtools.lsp4ij.dap.descriptors.DebugAdapterDescriptorFactory
 class GDBDebugAdapterDescriptorFactory : DebugAdapterDescriptorFactory() {
 
     override fun createDebugAdapterDescriptor(options: RunConfigurationOptions, environment: ExecutionEnvironment): DebugAdapterDescriptor {
-        return GDBDebugAdapterDescriptor(options, environment, serverDefinition)
+        val debugger = GDBDebugAdapterDescriptor(options, environment, serverDefinition)
+        debugger.setVariableSupport(CDebugAdapterVariableSupport())
+        return debugger
     }
 
     override fun getConfigurationEditor(project: Project): SettingsEditor<out RunConfiguration?> {

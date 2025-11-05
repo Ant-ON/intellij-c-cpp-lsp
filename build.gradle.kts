@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "ru.zdevs"
-version = "0.1"
+version = "0.2"
 
 repositories {
     mavenCentral()
@@ -18,8 +18,8 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity("2024.1")
-        plugin("com.redhat.devtools.lsp4ij:0.16.1")
+        intellijIdeaCommunity("2024.2")
+        plugin("com.redhat.devtools.lsp4ij:0.18.0")
         bundledPlugin("org.jetbrains.plugins.textmate")
         pluginVerifier()
         zipSigner()
@@ -30,7 +30,7 @@ dependencies {
 intellijPlatform {
     pluginVerification {
         ides {
-            ide(IntelliJPlatformType.IntellijIdeaCommunity, "2024.1")
+            ide(IntelliJPlatformType.IntellijIdeaCommunity, "2024.2")
         }
     }
 }
